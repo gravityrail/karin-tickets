@@ -1,0 +1,6 @@
+<%= simple_form_for @event do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+  <div class="submit-options">
+    <%= f.button :submit %> or <%= link_to 'Back', events_path %>
+  </div>
+<% end %>

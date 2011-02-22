@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Event:</b>
+  <%= @ticket.event.name %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @ticket.price %>
+</p>
+
+<p>
+  <b>Available:</b>
+  <%= @ticket.available %>
+</p>
+
+<p>
+  <b>Date open:</b>
+  <%= @ticket.date_open %>
+</p>
+
+<p>
+  <b>Date closed:</b>
+  <%= @ticket.date_closed %>
+</p>
+
+<div>
+  <p>
+    <b>Package:</b>
+    <%= @ticket.package %>
+  </p>
+  <% if @ticket.package %>
+  <p>
+    <b>Generates ticket:</b>
+    <%= @ticket.generates_ticket %>
+  </p>
+
+  <p>
+    <b>Generates number:</b>
+    <%= @ticket.generates_number %>
+  </p>
+  <% end %>
+</div>
+
+<%= link_to _('Edit'), edit_event_ticket_path(@event, @ticket) %> |
+<%= link_to _('Back'), event_tickets_path %>

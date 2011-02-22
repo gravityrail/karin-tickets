@@ -1,0 +1,10 @@
+<div class="column grid_8">
+  <div id="content">
+    <%= yield %>
+  </div>
+</div>
+<div class="column grid_4 sidebar">
+  <%= yield(:right) %>
+</div>
+
+<%= parent_layout 'filthysecrets' %>

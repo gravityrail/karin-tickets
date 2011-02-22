@@ -1,0 +1,23 @@
+<h1>Listing user_groups</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th># Permissions</th>
+    <th># Members</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_groups.each do |user_group| %>
+  <tr>
+    <td><%= link_to user_group.name, user_group %></td>
+    <td><%= user_group.permissions.count %></td>
+    <td><%= user_group.users.count %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User group', new_user_group_path %>

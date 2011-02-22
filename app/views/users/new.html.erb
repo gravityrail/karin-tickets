@@ -1,0 +1,8 @@
+<h1><%= _('Register') %></h1>
+
+<% form_for @user, :url => account_path do |f| %>
+	<%= render :partial => "new_user_form", :locals => { :f => f } %>
+	<%= f.submit _('Register') %>
+<% end %>
+
+<%= link_to 'Back', users_path %>

@@ -1,0 +1,22 @@
+<section id="header">
+<nav id="user" class="inline">
+<%=
+if current_user
+	render :partial => "layouts/registered_user"
+else
+	render :partial => "layouts/guest_user"
+end
+%>
+</nav>
+<header>
+<h1><%= Pcfg.get('organization.name') || _("Pittco") %></h1>
+<h2 title="v<%= Plas::VERSION %>"><%= Pcfg.get('organization.app_name') || _("Pittco LAN Administration System") %></h2>
+</header>
+<nav id="modules" class="inline">
+<ul>
+<li><%= link_to _("Home"), root_path %></li>
+<li><%= link_to _("Users"), users_path %></li>
+<li><%= link_to _("Events"), events_path %></li>
+</ul>
+</nav>
+</section>

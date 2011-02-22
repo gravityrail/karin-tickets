@@ -1,0 +1,9 @@
+<% form_for @user, :url => user_path(@user) do |f| %>
+	<%= f.error_messages %>
+	<%= render :partial => "edit_form", :locals => { :f => f } %>
+    <div class="submit-options">
+	  <%= f.submit _('Save changes') %> or <%= link_to _('Cancel'), @user %>
+    </div>
+<% end %>
+
+

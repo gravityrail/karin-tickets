@@ -1,0 +1,148 @@
+body {
+	/*padding: 0.2em;*/
+	font-size: 16px;
+	font-family: "Droid Sans", Arial, sans-serif;
+}
+
+body {
+	height:auto !important;
+	margin:0 auto -4em;
+	min-height:100%;
+	position:relative;
+	/*width:990px;*/
+}
+
+nav.inline ul {
+	list-item-style: none;
+	display: inline;
+}
+
+nav.inline ul li {
+	list-item-style: none;
+	display: inline;
+}
+section#header {
+	margin-bottom: 1em;
+}
+section#header header {
+  padding-bottom: 0.3em;
+}
+section#header nav#user {
+	position: absolute;
+	right: 0.6em;
+  padding: .4em .5em .3em;
+}
+section#header nav#modules {
+	clear: both;
+}
+section#header header h1 {
+	font-size: 5em;
+}
+
+section#header header h2 {
+	font-size: 0.8em;
+	font-style: italic;
+	color: #ddd;
+  padding: 0 0 0.3em 0.3em;
+}
+section#header nav#modules {
+  padding: 0.3em;
+}  
+section#content {
+	margin-bottom:5em;
+}
+
+dl.info-list, dl.form-list {
+    padding-bottom: 2em;
+    margin-left: 25px;
+}
+
+dl.info-list fieldset, dl.form-list fieldset {
+    border-style:solid;
+    border-width:1px;
+    width: 95%;
+    padding: 1em 0px 1em 0px;
+    -moz-border-radius: 24px 6px;
+    border-radius: 24px 6px;
+}
+
+dl.info-list legend, dl.form-list legend {
+    margin-left: 2em;
+    font-size: 115%;
+}
+
+dl.info-list dt, dl.form-list dt {
+    float: left;
+    margin-left: 2em;
+}
+
+dl.info-list dd {
+    margin-left: 15em;
+    height: auto;
+    min-height: 1em;
+}
+
+dl.form-list dd {
+    margin-left: 15em;
+    height: auto;
+    min-height: 1.5em;
+}
+.ticket-list table {
+  width: 100%;
+}
+
+.submit-options {
+    margin-left: 250px; /* hack, will make this look better later */
+}
+
+br.clear-footer {
+	clear:both;
+	margin:1.5em;
+}
+
+.admin-tools {
+    float: right;
+    padding-right: 10px;
+    margin-top: -20px;
+}
+
+footer {
+	bottom:0;
+	clear:both;
+	font-size:85%;
+	height:4em;
+	position:absolute;
+	/*width:100%;*/
+  text-align: right;
+  right:0;
+}
+
+article.event {
+  margin: 1em;
+  padding: 0.5em 0.2em 0.2em 0.5em;
+  -moz-border-radius: 24px 6px;
+  border-radius: 24px 6px;
+  position: relative;
+}
+
+article.event h1 {
+  font-size: 2em;
+}
+
+article.event div.admin-actions {
+  text-align: right;
+  position: absolute;
+  top: 0.2em;
+  right: 0.2em;
+}
+p.notice {
+  position: absolute;
+  top: 0;
+  left: 45%;
+  padding: 0.5em;
+}
+div#errorExplanation {
+  padding: 0.5em;
+  margin: 0 auto;
+  width: 95%;
+}

@@ -1,0 +1,54 @@
+  <h2><%= _('Event Information') %></h2>
+  <%= f.input :name %>
+  <%= f.input :start, :as => :string, :input_html => {:class => 'datetime', :value => (f.object.start.blank? ? '' : f.object.start.strftime('%Y-%m-%d %H:%M'))} %>
+  <%= f.input :end, :as => :string, :input_html => {:class => 'datetime', :value => (f.object.end.blank? ? '' : f.object.end.strftime('%Y-%m-%d %H:%M'))} %>
+  <%= f.input :capacity, :label => 'Tickets Avail'  %>
+  <%= f.association :show %>
+<!--
+      <dt><%= f.label :description %></dt>
+      <dd><%= f.text_area :description %></dd>
+-->
+
+<!-- XXX TODO: work out compromise between show and event venue information - override? -->
+<!--
+    <fieldset>
+      <legend><%= _('Address') %></legend>
+    <%= f.fields_for :addresses do |af| %>
+      <dt><%= af.label :line1 %></dt>
+	  <dd><%= af.text_field :line1 %></dd>
+
+	  <dt><%= af.label :line2 %></dt>
+	  <dd><%= af.text_field :line2 %></dd>
+
+	  <dt><%= af.label :line3 %></dt>
+	  <dd><%= af.text_field :line3 %></dd>
+
+	  <dt><%= af.label :neighborhood %></dt>
+      <dd><%= af.text_field :neighborhood %></dd>
+
+	  <dt><%= af.label :city %></dt>
+      <dd><%= af.text_field :city %></dd>
+
+	  <dt><%= af.label :region %></dt>
+      <dd><%= af.text_field :region %></dd>
+
+	  <dt><%= af.label :country %></dt>
+      <dd><%= af.text_field :country %></dd>
+
+	  <dt><%= af.label :postcode %></dt>
+      <dd><%= af.text_field :postcode %></dd>
+
+	  <dt><%= af.label :phone %></dt>
+    <dd><%= af.telephone_field :phone, { :pattern => '^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}.*?$' } %></dd>
+
+      <dt><%= af.label :address_type %></dt>
+      <dd><%= af.select :address_type, Address::TYPES, :default => "event" %></dd>
+
+	  <%= af.hidden_field :primary, :value => true %>
+    <% end %>
+    </fieldset>
+-->
+
+  <h2 style="clear: both;"><%= _('Options') %></h2>
+  <%= f.input :registration_open %>
+  <%= f.input :visible, :input_html => {:checked_value => 1, :unchecked_value => 0, :checked => true} %>

@@ -1,0 +1,66 @@
+<% if notice and not notice.empty? %>
+  <p class="notice">
+    <%= notice %>
+  </p>
+<% end %>
+
+<dl class="user-info info-list">
+  <fieldset>
+    <legend><%= _('User Information for %s') % @user.full_name %></legend>
+    <%=render :partial => 'users/tools'%>
+
+    <dt><%= _('Name') %></dt>
+    <dd><%= @user.given_name %> <%= @user.family_name %></dd>
+    
+    <dt><%= _('Handle') %></dt>
+    <dd><%= ( @user.handle and not @user.handle.empty? ) ? @user.handle : _('%s has not set a handle.') % @user.display_name %></dd>
+    
+    <dt><%= _('Email') %></dt>
+    <dd><%= @user.email %></dd>
+    
+    <dt><%= _('Gaming group') %></dt>
+    <dd><%= ( @user.gaming_group and not @user.gaming_group.empty? ) ? @user.gaming_group : _('%s has not allied with a group.') % @user.display_name %></dd>
+    
+    <dt><%= _('Gamer type') %></dt>
+    <dd><%= ( @user.gamer_type ) ? @user.gamer_type : _('%s has not set a gamer type.') % @user.display_name %></dd>
+    
+    <dt><%= _('Birthdate') %></dt>
+    <dd><%= @user.birthdate %></dd>
+    
+    <dt><%= _('Gender') %></dt>
+    <dd><%= @user.gender %></dd>
+    
+    <dt><%= _('Created') %></dt>
+    <dd><%= @user.created_at %></dd>
+  </fieldset>
+
+  <% if current_user.can('users.administrate') %>
+  <fieldset>
+    <legend><%= _('Internals') %></legend>
+    <dt><%= _('Last updated') %></dt>
+    <dd><%= @user.updated_at %></dd>
+
+    <dt><%= _('Disabled?') %></dt>
+    <dd><%= @user.disabled %></dd>
+    
+    <dt><%= _('Login count') %></dt>
+    <dd><%= @user.login_count %></dd>
+    
+    <dt><%= _('Last request at') %></dt>
+    <dd><%= @user.last_request_at %></dd>
+    
+    <dt><%= _('Last login at') %></dt>
+    <dd><%= @user.last_login_at %></dd>
+    
+    <dt><%= _('Current login at') %></dt>
+    <dd><%= @user.current_login_at %></dd>
+    
+    <dt><%= _('Last login ip') %></dt>
+    <dd><%= @user.last_login_ip %></dd>
+    
+    <dt><%= _('Current login ip') %></dt>
+    <dd><%= @user.current_login_ip %></dd>
+  </fieldset>
+<% end %>
+</dl>
+

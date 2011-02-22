@@ -1,0 +1,63 @@
+<%= content_for(:right) do %>
+<div class="block" id="times">
+  <h2>Dates/Times</h2>
+  <p>
+  April 12th - 23rd<br />
+  9pm every day <strong>except</strong> Mondays and Thursdays
+  </p>
+  <ul>
+  <% @show.events.each do |event| %>
+    <li><%= event_time(event.start) %> 
+      <% cutoff_time = (Time.now.to_datetime - 1.hours).to_datetime %>
+      <% if(event.start < cutoff_time) %>
+        <strong>Closed</strong>
+      <% elsif(event.seats_remaining == 0) %>
+        <strong>Sold Out!</strong>
+      <% else %>
+        <%= link_to 'Book Now!', event_register_path(event), :class => 'book-button' %>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+</div>
+
+<div class="block" id="venue">
+  <h2>Venue</h2>
+  The Order Of Melbourne<br />
+  Lvl 2 401 Swanston Street Melbourne<br />
+  <p>web: <a href="http://www.theorder.com.au/">http://www.theorder.com.au/</a></p>
+  <p>phone: (03) 9663 6707</p>
+</div>
+
+<div class="block" id="share">
+  <h2>Help promote the show!</h2>
+  <a hre="#">Share on Facebook</a><br />
+  <a hre="#">Share on Twitter</a>
+</div>
+
+<% end %>
+
+<div id="show">
+<% if @show.byline %>
+  <p class="byline"><%= @show.byline %></p>
+<% end %>
+<h1><%= @show.name %></h1>
+<% if @show.tagline %>
+  <p class="tagline"><%= @show.tagline %></p>
+<% end %>
+
+<div class="description">
+<%= raw @show.description %>
+</div>
+
+<div class="credits">
+  <%= raw @show.credits %>
+</div>
+
+<div class="quotes">
+  <%= raw @show.quotes %>
+</div>
+
+<%= link_to 'Edit', edit_show_path(@show) %> |
+<%= link_to 'Back', shows_path %>
+</div>

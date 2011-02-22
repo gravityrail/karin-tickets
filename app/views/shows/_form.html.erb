@@ -1,0 +1,19 @@
+<%= simple_form_for(@show) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :name%>
+    <%= f.input :byline %>
+    <%= f.input :tagline %>
+    <%= f.input :description, :input_html => { :class => :mceEditor }  %>
+    <%= f.input :credits, :input_html => { :class => :mceEditor }  %>
+    <%= f.input :quotes, :input_html => { :class => :mceEditor }  %>
+    <%= f.association :events %>
+    <%= link_to "Add Event to Show", new_event_path(:show_id => @show.id) %> |
+    <%= link_to "Edit all events", events_path %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

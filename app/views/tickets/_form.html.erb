@@ -1,0 +1,8 @@
+<%= simple_form_for ([@event, @ticket])  do |f| %>
+  <%= f.input :name %>
+  <%= f.input :cents, :label=>'Amount (cents)' %>
+  <%= f.input :available, :hint=>'Tickets of this type available (leave blank for limited by venue capacity)' %>
+  <%= f.input :date_open, :as => :string, :input_html => {:class => 'datetime', :value => (f.object.date_open.blank? ? '' : f.object.date_open.strftime('%Y-%m-%d %H:%M'))} %>
+  <%= f.input :date_closed, :as => :string, :input_html => {:class => 'datetime', :value => (f.object.date_closed.blank? ? '' : f.object.date_closed.strftime('%Y-%m-%d %H:%M'))} %><br />
+  <%= f.button :submit %>
+<% end %>

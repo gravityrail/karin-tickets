@@ -1,0 +1,118 @@
+[required] { background-color: lightyellow; }
+:invalid { background-color: red; }
+tbody tr:nth-child(odd) {
+     background-color: #eee;
+}
+
+a.icon {
+    background-repeat:no-repeat;
+    padding-left: 1em;
+}
+
+a.delete {
+    background-image:url('../images/icons/cross.png');
+}
+
+a.edit {
+    background-image:url('../images/icons/pencil.png');
+}
+
+a.disable {
+    background-image:url('../images/icons/disable.png');
+}
+
+a.create-ticket {
+    background-image:url('../images/icons/money_add.png');
+}
+
+article.event {
+  background-color: #eee;
+  border: 1px solid #000;
+}
+
+section#header nav#user {
+  background: #F3E17B;
+  background: -webkit-gradient(linear, left top, left bottom, from(#F3E17B), to(#D1C059));
+  background: -moz-linear-gradient(#f3e17b, #d1c059);
+  color: white;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  line-height: .85em;
+  text-shadow: .05em .05em .1em rgba(0,0,0,.7);
+  
+  -moz-border-radius: 0 0 .3em .3em;
+  -webkit-border-radius: 0 0 .3em .3em;
+  border-radius: 0 0 .3em .3em;
+  
+  -moz-box-shadow:.1em .1em .5em black;
+  -webkit-box-shadow:.1em .1em .5em black;
+  box-shadow:.1em .1em .5em black;
+}
+
+section#header header {
+  background: #7071A7;
+  background: -webkit-gradient(linear, left top, left bottom, from(#9293C9), to(#7071A7));
+  background: -moz-linear-gradient(#9293c9, #7071a7);
+  color: white;
+  font-weight: bold;
+  text-shadow: .1em .1em .1em rgba(0,0,0,.7);
+  
+  -moz-box-shadow:.1em .1em .5em black;
+  -webkit-box-shadow:.1em .1em .5em black;
+  box-shadow:.1em .1em .5em black;
+ /* margin-bottom: 1em;
+ */
+}
+
+section#header nav#modules {
+  background: #EEE;
+  background: -webkit-gradient(linear, left top, left bottom, from(#EEE), to(#BBB));
+  background: -moz-linear-gradient(#EEE, #BBB);
+  color: black;
+  font-weight: bold;
+  text-shadow: .1em .1em .1em rgba(255,255,255,0.4);
+  -moz-box-shadow:.1em .1em .5em black;
+  -webkit-box-shadow:.1em .1em .5em black;
+  box-shadow:.1em .1em .5em black;
+  margin-bottom: 1em;
+  -moz-border-radius: 0 0 .3em .3em;
+  -webkit-border-radius: 0 0 .3em .3em;
+  border-radius: 0 0 .3em .3em;
+}
+
+section#header {
+  overflow: hidden;
+}
+section#footer footer div#copyright-notice span.company:before
+{
+  content: url('../images/logos/pittco_logo_11x12.png');
+}
+section#footer footer div#copyright-notice span.project:before
+{
+  content: url('../images/logos/plas/plas_logo12.png');
+}
+section#header header h1 {
+  background: transparent url("../images/logos/plas/plas_logo64.png") no-repeat left center;
+  padding-left: 60px;
+}
+p.notice {
+  background: #9e9;
+  -moz-border-radius: 0 0 0.3em 0.3em;
+  -webkit-border-radius: 0 0 0.3em 0.3em;
+  border-radius: 0 0 0.3em 0.3em;
+  -moz-box-shadow:.1em .1em 2em black;
+  -webkit-box-shadow:.1em .1em 2em black;
+  box-shadow:.1em .1em 2em black;
+}
+  
+div#errorExplanation {
+  border: 1px solid #800;
+  background: #e99;
+  padding: 0.5em;
+  -moz-border-radius: 0 0 0.3em 0.3em;
+  -webkit-border-radius: 0 0 0.3em 0.3em;
+  border-radius: 0.3em;
+  -moz-box-shadow:.1em .1em 2em black;
+  -webkit-box-shadow:.1em .1em 2em black;
+  box-shadow:.1em .1em 0.3em black;
+}

@@ -1,0 +1,73 @@
+<% if notice and not notice.empty? %><p class="notice"><%= notice %></p><%end%>
+
+<dl class="event-info info-list">
+  <fieldset>
+    <legend>Event Information</legend>
+    <%=render :partial => 'events/tools'%>
+
+    <dt><%= _('Name') %></dt>
+    <dd><%= @event.name %></dd>
+
+    <dt>Start</dt>
+    <dd><%= @event.start %></dd>
+
+    <dt>End</dt>
+    <dd><%= @event.end %></dd>
+
+    <!--
+<dt>Description</dt>
+    <dd><%= @event.description %></dd>
+-->
+  </fieldset>
+
+  <!--
+<fieldset>
+    <legend><%= _('Address') %></legend>
+
+  <% @event.addresses.each do |address| %>
+    <dt>Address</dt>
+    <dd><%= address.pretty %></dd>
+  <% end %>
+  </fieldset>
+-->
+  <% if current_user and current_user.can 'events.administrate' %>
+    <h2><%= _('Options') %></h2>
+
+    <strong>Registration Open</strong>: <%= @event.registration_open %><br />
+    <strong>Visible</strong>: <%= @event.visible %>
+
+  <%end%>
+</dl>
+
+<h2><%= _('Tickets') %></h2>
+  <%=render :partial => 'events/ticket_tools'%>
+  <% if @event.tickets.count == 0 %>
+    <p><i><%= _('No tickets have been created for this event. No seats are available.') %></i></p>
+  <% else %>
+  <p><%= _("There are %d seats remaining of %d seats available for this event.") % [@event.seats_remaining, @event.seats_available] %></p>
+
+  <% @event.tickets.each do |t| %>
+    <dt class="<%= t.available? ? "available" : "unavailable" %>"><%= link_to t.name, event_ticket_path(@event, t) %></dt>
+    <dd class="<%= t.available? ? "available" : "unavailable" %>">
+      <%= "%s %s" % [t.price.currency.symbol, t.price] %>
+      <%=
+        if t.unlimited?
+          _("limited by venue capacity")
+        elsif t.available?
+          _("%d tickets available, %d tickets remaining") % [t.available, t.remaining]
+        elsif t.sold_out?
+          _("This ticket is sold out.")
+        else
+          _("This ticket is no longer available.")
+        end
+      %>
+
+    </dd>
+  <% end %>
+  <div class="ticket-actions">
+    <%= link_to _("Purchase tickets for this event"), event_register_path(@event) if @event.registration_open %><br/>
+    <%= link_to _("Who is registered?"), event_registrations_url(@event) %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', events_path %>

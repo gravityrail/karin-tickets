@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Address:</b>
+  <%= @transaction.address.pretty if @transaction.address %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @transaction.email %>
+</p>
+
+<p>
+  <b>Payer name:</b>
+  <%= @transaction.payer_name %>
+</p>
+
+<p>
+  <b>Payer country:</b>
+  <%= @transaction.payer_country %>
+</p>
+
+<p>
+  <b>Processor userid:</b>
+  <%= @transaction.processor_userid %>
+</p>
+
+<p>
+  <b>Payment:</b>
+  <%= @transaction.payment_id %>
+</p>
+
+<p>
+  <b>Payment Media:</b>
+  <%= @transaction.payment_media %>
+</p>
+
+<p>
+  <b>Recorded by:</b>
+  <%= @transaction.recorded_by %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @transaction.amount %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @transaction.comments %>
+</p>
+
+<p>
+  <b>Registrations:</b>
+  <ul>
+    <% @transaction.registrations.each do |r| %>
+      <li>
+      <% if r.ticket %>
+        <%= r.ticket.name %> bought by <%= r.purchaser.display_name %> 
+        <%= "(%s)" % r.user.display_name if r.user %>
+      <% else %>
+        Ticket <%= r.ticket_id %> no longer exists<br />
+        bought by <%= r.purchaser.display_name %> 
+        <%= "(%s)" % r.user.display_name if r.user %>
+      <% end %>
+      </li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Back', transactions_path %>
