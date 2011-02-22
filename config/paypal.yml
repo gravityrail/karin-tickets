@@ -1,0 +1,18 @@
+development:
+  login: 
+  password: AKIAIVFWPJ5VISGCRF6Q
+  signature: /Zad6Yw+lu6izV67L5/uI6B15676d6GN6B/NmqDJ
+
+test:
+  bucket: filthysecrets_development
+  access_key_id: AKIAIVFWPJ5VISGCRF6Q
+  secret_access_key: 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
+  acl: public-read
+  max_file_size: 1073741824
+
+production:
+  bucket: filthysecrets
+  access_key_id: AKIAIVFWPJ5VISGCRF6Q
+  secret_access_key: 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
+  acl: public-read
+  max_file_size: 1073741824

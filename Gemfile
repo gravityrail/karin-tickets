@@ -10,6 +10,9 @@ gem 'gherkin', :git => 'git://github.com/colindean/gherkin'
 
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 
+gem 'heroku'
+gem 'taps'
+
 # XXX Dan custom
 gem 'annotate'
 gem 'simple_form'
