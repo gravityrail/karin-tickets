@@ -1,3 +1,3 @@
-class Admin::DashboardController > ApplicationController
+class Admin::DashboardController < ApplicationController
 
 end
