@@ -1,6 +1,6 @@
 PLAS: Pittco LAN Administration System
 ======================================
-
+ 
 Administrate your LAN party organization using this handy tool. Accept
 payments, track users, schedule tournaments, and more.
 
