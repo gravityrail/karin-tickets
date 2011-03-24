@@ -1,0 +1,8 @@
+development: &default
+  site_name: Karin Muiznieks' Filthy Secrets
+
+test: &test
+  <<: *default
+
+production: 
+  <<: *default

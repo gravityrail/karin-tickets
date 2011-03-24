@@ -1,18 +1,14 @@
 development:
-  login: 
-  password: AKIAIVFWPJ5VISGCRF6Q
-  signature: /Zad6Yw+lu6izV67L5/uI6B15676d6GN6B/NmqDJ
+  login: seller_1254323898_biz_api1.gravityrail.com
+  password: 1254323911
+  signature: A6xLLb8-axTr97W7Y5hIsEOAWIw1A5aLHK37WzZ1Yd.2yeFftAmbSZKZ
 
 test:
-  bucket: filthysecrets_development
-  access_key_id: AKIAIVFWPJ5VISGCRF6Q
-  secret_access_key: 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
-  acl: public-read
-  max_file_size: 1073741824
-
+  login: seller_1254323898_biz_api1.gravityrail.com
+  password: 1254323911
+  signature: A6xLLb8-axTr97W7Y5hIsEOAWIw1A5aLHK37WzZ1Yd.2yeFftAmbSZKZ
+  
 production:
-  bucket: filthysecrets
-  access_key_id: AKIAIVFWPJ5VISGCRF6Q
-  secret_access_key: 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
-  acl: public-read
-  max_file_size: 1073741824
+  login: payments_api1.gravityrail.com
+  password: SNPVUSHE2WNPNLL4
+  signature: AXjpDEmTzmXPX0RfwT1qw4e6ySzaA1V-GsJvlWgflswodbcJubEcaNvT

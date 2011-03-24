@@ -1,5 +1,8 @@
-<ul class="guest-user">
-  <li id="current-time"><%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %></li>
-  <li><%= link_to _('Sign up'), new_user_path %></li>
-  <li><%= link_to _('Login'), login_path %></li>
-</ul>
+<div class="nav">
+
+  
+  <ul id="menu">
+    <li><%= link_to _("Home"), root_path %></li>
+    <li><%= link_to _("Events"), events_path %></li>
+  </ul>
+</div>

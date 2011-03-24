@@ -15,4 +15,8 @@ module ApplicationHelper
     self.output_buffer = render(:file => "layouts/#{layout}")
   end
   
+  def site_name
+    SITE['site_name']
+  end
+  
 end

@@ -4,7 +4,7 @@ require 'activemerchant'
 class RegistrationsController < ApplicationController
   include ActiveMerchant::Billing
 
-  before_filter :require_user
+  #before_filter :require_user
   before_filter :get_event
 
   def get_event
@@ -18,9 +18,9 @@ class RegistrationsController < ApplicationController
   #store the gateway object
   def gateway
     @gateway ||= ActiveMerchant::Billing::PaypalExpressGateway.new(
-      :login => Pcfg.get('paypal.login'),
-      :password => Pcfg.get('paypal.password'),
-      :signature => Pcfg.get('paypal.signature')
+      :login => PAYPAL_CONFIG['login'],
+      :password => PAYPAL_CONFIG['password'], 
+      :signature => PAYPAL_CONFIG['signature']
     )
   end
   private :gateway
