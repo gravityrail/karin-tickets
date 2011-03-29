@@ -12,7 +12,7 @@
   </p>
   <ul>
   <% Event.all(:order => 'start desc').each do |event| %>
-    <li><%= event.start.strftime("%B %d, %I:%M %p") %> 
+    <li><%= pretty_date(event.start) %> 
       <% cutoff_time = (Time.now.to_datetime - 1.hours).to_datetime %>
       <% if(event.start < cutoff_time) %>
         <strong>Closed</strong>

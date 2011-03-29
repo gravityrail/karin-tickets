@@ -19,4 +19,8 @@ module ApplicationHelper
     SITE['site_name']
   end
   
+  def pretty_date(date)
+    date.strftime("%B %d, %I:%M %p")
+  end
+  
 end

@@ -17,6 +17,7 @@
 
 <% @tickets.each do |ticket| %>
   <tr>
+    <td><%= ticket.name %></td>
     <td><%= ticket.price %></td>
     <td><%= ticket.available %></td>
     <td><%= ticket.date_open %></td>
@@ -26,8 +27,8 @@
       <td><%= ticket.generates_ticket %></td>
       <td><%= ticket.generates_number %></td>
     <% else %>
-      <td>&nsbp;</td>
-      <td>&nbsp;</td>
+      <td></td>
+      <td></td>
     <% end %>
     <td><%= link_to 'Show', [@event, ticket] %></td>
     <td><%= link_to 'Edit', edit_event_ticket_path(@event, ticket) %></td>

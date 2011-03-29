@@ -1,5 +1,8 @@
 <h1><%= _("Pay for your tickets for %s") % @event.name %></h1>
 <p><%= _("Please review your order and choose a payment method.") %></p>
+<fieldset>
+<legend>Booking Details</legend>
+
 <table>
   <thead>
     <th><%= _("Number of Tickets") %></th>
@@ -27,15 +30,26 @@
   <dd><% ot = Money.new(@order_total) %>
   <%= "%s %s" % [ot.currency.symbol, ot] %></dd>
 </dl>
+</fieldset>
 
+<fieldset>
+<legend>Your Details</legend>
+<dt>User ID</dt><dd><%= @user.id %></dd>
+<dt>Name</dt><dd><%= @user.given_name %> <%= @user.family_name %></dd>
+<dt>Email</dt><dd><%= @user.email %></dd>
+</fieldset>
+
+<fieldset>
+<legend>Pay for your tickets</legend>
 <ul>
-  <li><%= link_to image_tag('/images/paypal_btn.gif', :alt=>'Pay using PayPal'), event_registerpaypal_path %></li>
-  <li><%= link_to _('Pay offline (e.g., check, cash in person)'), event_registerreserve_path %></li>
+  <li><strong>Option 1: </strong><%= link_to image_tag('/images/paypal_btn.gif', :alt=>'Pay now using PayPal'), event_registerpaypal_path %></li>
+  <li><strong>Option 2: </strong><%= link_to _('Pay at Venue'), event_registerreserve_path %></li>
 </ul>
+</fieldset>
 
 <% if @instructions.length > 0 %>
 <div id="offline-payment-instructions">
-  <h3><%= _("Offline payment instructions") %></h3>
+  <h3><%= _("Pay at Venue") %></h3>
   <%= @instructions %>
 </div>
 <% end %>

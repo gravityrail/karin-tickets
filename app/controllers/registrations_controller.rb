@@ -3,6 +3,8 @@ require 'activemerchant'
 
 class RegistrationsController < ApplicationController
   include ActiveMerchant::Billing
+  
+  DEFAULT_USER_PASSWORD = 'abcd1234'
 
   #before_filter :require_user
   before_filter :get_event
@@ -28,6 +30,8 @@ class RegistrationsController < ApplicationController
   # GET /register
   def register
     @tickets = @event.find_available_tickets
+    @user = current_user || User.new
+#    @registration = @event.registrations.build
     respond_to do |format|
       format.html # register.html.erb
       format.xml { render :xml => @tickets }
@@ -36,6 +40,9 @@ class RegistrationsController < ApplicationController
 
   # POST /review
   def review
+    @user = current_user || 
+            User.find_by_email(params[:user][:email]) || 
+            User.create(params[:user].merge(:password=>DEFAULT_USER_PASSWORD))
     @instructions = Pcfg.get("payments.offline-instructions") || ""
     @desired_tickets = params[:ticket]
     if !@desired_tickets
@@ -51,6 +58,7 @@ class RegistrationsController < ApplicationController
       @desired_tickets[k]["name"] = ticket.name
       @desired_tickets[k]["price"] = ticket.price.cents
       @desired_tickets[k]["total"] = ticket.price.cents * v["number"].to_i
+      @desired_tickets[k]["user"] = @user
       @order_total = @order_total + @desired_tickets[k]["total"]
     end
 

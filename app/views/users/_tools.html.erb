@@ -1,11 +1,12 @@
 <% if @user == current_user or current_user.can('users.administrate') %>
 <section id="user-admin-tools" class="admin-tools">
 	<header>
-		<h1><%= _('Adminster %s') % @user.handle  %></h1>
+		<h1><%= _('Administer %s') % @user.handle  %></h1>
 	</header>
 	<ul>
 		<li><%= link_to(_('Edit %s') % @user.handle , edit_user_path(@user), :class => 'icon edit') %></li>
 		<li><%= link_to(_('Delete %s') % @user.handle, user_path(@user), :confirm => _('Are you sure you want to delete %s? This could destroy some referential integrity and cripple the application. It is better to disable the user.') % @user.handle, :method => :delete, :class => 'icon delete' ) %></li>
 	</ul>
+  <div class="clear"></div>
 </section>
 <% end %>

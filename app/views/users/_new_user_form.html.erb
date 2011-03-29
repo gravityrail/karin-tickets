@@ -21,21 +21,6 @@
     <%= f.text_field :family_name %>
   </div>
   <div class="field">
-    <%= f.label :birthdate %><br />
-    <%= f.date_select :birthdate, :start_year => Time.now.year - 100, 
-																	:end_year => Time.now.year - 13,
-																	:default => Time.now - 18.years %>
-		<%= _('If you are younger than this date, you may need your parents\' signature on the waiver to enter the event. No exceptions are granted to this rule.') %>
-  </div>
-  <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
-    <%= f.password_field :password %>
   </div>
