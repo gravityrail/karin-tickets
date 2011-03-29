@@ -1,5 +1,5 @@
 class Show < ActiveRecord::Base
-  has_many :events, :order => 'start desc'
+  has_many :events, :order => 'start asc'
 end
 
 # == Schema Information
