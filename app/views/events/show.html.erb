@@ -66,7 +66,9 @@
   <% end %>
   <div class="ticket-actions">
     <%= link_to _("Purchase tickets for this event"), event_register_path(@event) if @event.registration_open %><br/>
-    <%= link_to _("Who is registered?"), event_registrations_url(@event) %>
+    <% if current_user && current_user.can('users.administrate') %>
+      <%= link_to _("Who is registered?"), event_registrations_url(@event) %>
+    <% end %>
   </div>
 <% end %>
 
