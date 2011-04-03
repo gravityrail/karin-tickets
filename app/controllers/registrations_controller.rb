@@ -58,12 +58,15 @@ class RegistrationsController < ApplicationController
       @desired_tickets[k]["name"] = ticket.name
       @desired_tickets[k]["price"] = ticket.price.cents
       @desired_tickets[k]["total"] = ticket.price.cents * v["number"].to_i
-      @desired_tickets[k]["user"] = @user
       @order_total = @order_total + @desired_tickets[k]["total"]
+      puts "saving ticket #{@desired_tickets[k]} to session"
     end
 
     session[:tickets] = @desired_tickets
+    session[:ticket_buyer] = @user.id
     session[:order_total] = @order_total #is this safe to put in here? doubtful
+
+    puts 'session: '+session.inspect
 
     respond_to do |format|
       format.html # review.html.erb
@@ -91,6 +94,7 @@ class RegistrationsController < ApplicationController
     session[:paypal_token] = params[:token]
     session[:payer_id] = params[:PayerID]
     @desired_tickets = session[:tickets]
+    @user = User.find(session[:ticket_buyer])
     @order_total = session[:order_total]
 
     @details_response  = gateway.details_for(session[:paypal_token])
@@ -125,6 +129,7 @@ class RegistrationsController < ApplicationController
       #clear the paypal transaction session vars
       session[:paypal_token] = nil
       session[:payer_id] = nil
+      user = User.find(session[:ticket_buyer])
       #create the registrations from what's in session[:tickets]
       session[:tickets].each do |k,v|
         number = v["number"]
@@ -132,7 +137,7 @@ class RegistrationsController < ApplicationController
         #TODO: I'm sure this can be done more efficiently and securely
         ticket = Ticket.find(tid)
         number.to_i.times do |index| #create number of tickets
-          reg = create_new_registration_from_ticket(ticket)
+          reg = create_new_registration_from_ticket(ticket, user)
           transaction.registrations << reg
           if ticket.package
             @ticket_package = true
@@ -161,15 +166,19 @@ class RegistrationsController < ApplicationController
   #GET /reserve
   #manual payment
   def reserve
-    @instructions = Pcfg.get("payments.offline-instructions") || ""
+    #@instructions = Pcfg.get("payments.offline-instructions") || ""
 
+    puts 'session: '+session.inspect
+    @user = User.find(session[:ticket_buyer])
+    @registrations = Array.new
     session[:tickets].each do |k,v|
       number = v["number"]
       tid = v["ticket_id"]
       #TODO: I'm sure this can be done more efficiently and securely
       ticket = Ticket.find(tid)
       number.to_i.times do |index| #create number of tickets
-        reg = create_new_registration_from_ticket(ticket)
+        reg = create_new_registration_from_ticket(ticket, @user)
+        @registrations << reg
         if ticket.package
           @ticket_package = true
           (ticket.generates_number.to_i - 1).times do #we already have one
@@ -179,6 +188,7 @@ class RegistrationsController < ApplicationController
             subreg.price_paid = 0
             subreg.package_parent = reg
             subreg.save
+            @registrations << subreg
           end
         end
       end
@@ -200,10 +210,10 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  def create_new_registration_from_ticket(ticket)
+  def create_new_registration_from_ticket(ticket, user)
     reg = Registration.new
     reg.ticket = ticket
-    reg.purchaser = current_user
+    reg.purchaser = user
     reg.price_paid = session[:order_total]
     reg.save
     reg

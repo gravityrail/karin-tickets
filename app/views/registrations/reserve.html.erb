@@ -1,8 +1,92 @@
 <h1><%= _("Your registration has been reserved.") %></h1>
 
-<% if @instructions.length > 0 %>
-<div id="offline-payment-instructions">
-  <h3><%= _("Offline payment instructions") %></h3>
-  <%= @instructions %>
-</div>
+Please print this page and bring it to the venue as confirmation of your booking.
+
+<% events = Hash.new %>
+<% price = 0 %>
+
+<p>
+<strong>Name: </strong> <%= @user.given_name %> <%= @user.family_name %><br />
+<strong>Email: </strong> <%= @user.email %>
+</p>
+
+<table>
+<tr><th>Ticket</th><th>Event</th><th>Date</th><th>Price</th></tr>
+<% @registrations.each do |reg| %> 
+  <% price += reg.ticket.cents %>
+  <% ticket = reg.ticket %>
+  <% event = ticket.event %>
+  <% events[event.id] = event %>
+<tr><td><%= ticket.name %></td><td><%= event.name %></td><td><%= pretty_date(event.start) %></td><td>$<%= ticket.cents / 100 %></td></tr>
 <% end %>
+</table>
+
+<strong>Total: </strong> $<%= price / 100 %>
+
+<h2>Event Details</h2>
+<% events.each do |id, event| %>
+<h3><%= event.name %></h3>
+<strong>Date: </strong> <%= pretty_date(event.start) %><br />
+<strong>Venue: </strong><br />
+  <% event.addresses.each do |address| %>
+    <%= address.line1 %><br />
+    <%= address.line2 %><br />
+    <%= address.city %><br />
+  <% end %>
+<% end %>
+
+<p><strong>Important: </strong> You have elected to pay for your tickets at the venue. Please be sure to arrive with enough cash to pay for your allotted tickets.</p>
+
+<!--
+# == Schema Information
+#
+# Table name: registrations
+#
+#  id                :integer         not null, primary key
+#  ticket_id         :integer
+#  price_paid        :float
+#  purchaser_id      :integer
+#  user_id           :integer
+#  date_given        :datetime
+#  package_parent_id :integer
+#  checked_in        :boolean
+#  date_checked_in   :datetime
+#  created_at        :datetime
+#  updated_at        :datetime
+#  transaction_id    :integer
+
+# Table name: tickets
+#
+#  id                  :integer         not null, primary key
+#  event_id            :integer
+#  cents               :float
+#  available           :integer
+#  date_open           :datetime
+#  date_closed         :datetime
+#  package             :boolean
+#  generates_ticket_id :integer
+#  generates_number    :integer
+#  created_at          :datetime
+#  updated_at          :datetime
+#  name                :string(255)     default("Registration for one person"), not null
+#  currency            :string(255)
+#
+
+Table name: addresses
+#  line1        :string(255)
+#  line2        :string(255)
+#  line3        :string(255)
+#  neighborhood :string(255)
+#  city         :string(255)
+#  region       :string(255)
+#  country      :string(255)
+#  postcode     :string(255)
+#  primary      :boolean
+#  phone        :string(255)
+#  user_id      :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#  event_id     :integer
+#  address_type :string(255)
+
+# -->

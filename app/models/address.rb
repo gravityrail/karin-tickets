@@ -1,6 +1,6 @@
 class Address < ActiveRecord::Base
 =begin
-This class is the central container for addresses in PLAS. 
+This class is the central container for addresses in SimpleTix. 
 
 These classes use it:
 
