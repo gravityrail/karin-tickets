@@ -2,6 +2,10 @@ class ShowsController < ApplicationController
   before_filter :require_permission_shows_administrate, :except => [:index,:show]
   uses_tiny_mce(:options => AppConfig.default_mce_options, :only => [:new, :edit])
 
+  def require_permission_shows_administrate
+    user_can('tickets.administrate', _("You are not permitted to create, edit, or destroy shows."))
+  end
+
   # GET /shows
   # GET /shows.xml
   def index
