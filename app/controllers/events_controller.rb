@@ -17,8 +17,8 @@ class EventsController < ApplicationController
     begin
       @event = Event.find(params[:id])
       @tickets = Event.connection.execute(<<ENDSQL)
-        select count(t.id) as number, max(t.name), u.given_name, u.family_name, u.email, 
-          tr.payment_media as pmt_media, tr.email as pmt_email, tr.payer_name as pmt_name 
+        select count(t.id) as number, max(t.name), max(u.given_name), max(u.family_name), max(u.email), 
+          max(tr.payment_media) as pmt_media, max(tr.email) as pmt_email, max(tr.payer_name) as pmt_name 
           from registrations r 
           inner join tickets t on (r.ticket_id = t.id and t.event_id = #{params[:id]}) 
           left join users u on (r.purchaser_id = u.id) 
