@@ -81,10 +81,10 @@
       <tr><th>Name</th><th>Email</th><th>Number</th><th>Type</th><th>Payment Type</th><th>Paypal Email</th></tr>
     <% @tickets.each do |res| %>
       <tr>
-        <td><%= res['given_name'] %> <%= res['family_name'] %></td>
+        <td><%= res['gn'] %> <%= res['fn'] %></td>
         <td><%= res['email'] %></td>
         <td><%= res['number'] %></td>
-        <td><%= res['name'] %></td>
+        <td><%= res['ticket_type'] %></td>
         <td><%= res['pmt_media'] || 'at door' %></td>
         <td><%= res['pmt_email'] %></td>
       </tr>
