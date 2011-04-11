@@ -58,6 +58,8 @@
   <%= raw @show.quotes %>
 </div>
 
-<%= link_to 'Edit', edit_show_path(@show) %> |
-<%= link_to 'Back', shows_path %>
+<% if current_user and current_user.can('tickets.administrate') %>
+  <%= link_to 'Edit', edit_show_path(@show) %> |
+  <%= link_to 'Back', shows_path %>
+<% end %>
 </div>

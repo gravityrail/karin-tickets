@@ -16,6 +16,16 @@ class EventsController < ApplicationController
   def show
     begin
       @event = Event.find(params[:id])
+      @tickets = Event.connection.execute(<<ENDSQL)
+        select count(t.id) as number, t.name, u.given_name, u.family_name, u.email, 
+          tr.payment_media as pmt_media, tr.email as pmt_email, tr.payer_name as pmt_name 
+          from registrations r 
+          inner join tickets t on (r.ticket_id = t.id and t.event_id = #{params[:id]}) 
+          left join users u on (r.purchaser_id = u.id) 
+          left join transactions tr on (r.transaction_id = tr.id) group by u.id, t.id, tr.id order by u.family_name
+ENDSQL
+
+      puts @tickets.inspect
       respond_to do |format|
         format.html # show.html.erb
         format.xml  { render :xml => @event }

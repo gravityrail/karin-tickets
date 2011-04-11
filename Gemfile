@@ -8,6 +8,8 @@ gem 'ffi', '~>1.0.0'
 gem 'gherkin', :git => 'git://github.com/colindean/gherkin'
 #end
 
+gem 'pg'
+
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 
 gem 'heroku'
