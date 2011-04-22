@@ -2,13 +2,16 @@ development:
   login: seller_1254323898_biz_api1.gravityrail.com
   password: 1254323911
   signature: A6xLLb8-axTr97W7Y5hIsEOAWIw1A5aLHK37WzZ1Yd.2yeFftAmbSZKZ
+  currency: AUD
 
 test:
   login: seller_1254323898_biz_api1.gravityrail.com
   password: 1254323911
   signature: A6xLLb8-axTr97W7Y5hIsEOAWIw1A5aLHK37WzZ1Yd.2yeFftAmbSZKZ
+  currency: AUD
   
 production:
   login: payments_api1.gravityrail.com
   password: SNPVUSHE2WNPNLL4
   signature: AXjpDEmTzmXPX0RfwT1qw4e6ySzaA1V-GsJvlWgflswodbcJubEcaNvT
+  currency: AUD

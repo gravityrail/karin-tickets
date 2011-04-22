@@ -22,7 +22,8 @@ class RegistrationsController < ApplicationController
     @gateway ||= ActiveMerchant::Billing::PaypalExpressGateway.new(
       :login => PAYPAL_CONFIG['login'],
       :password => PAYPAL_CONFIG['password'], 
-      :signature => PAYPAL_CONFIG['signature']
+      :signature => PAYPAL_CONFIG['signature'],
+      :currency => PAYPAL_CONFIG['currency']
     )
   end
   private :gateway
